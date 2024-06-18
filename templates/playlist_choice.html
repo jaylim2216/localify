@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Playlist Name</title>
+</head>
+<body>
+    <h1>Enter the name of a playlist in your Spotify library:</h1>
+    <form action="{{ url_for('choose_playlist') }}" method="post">
+        <label for="playlist_name">Playlist Name:</label>
+        <input type="text" id="playlist_name" name="playlist_name" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
