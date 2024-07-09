@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 10 Recommendations</title>
+    <style>
+        body {
+            font-family: 'Futura PT', sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            padding-top: 2em; /* Added padding to lower the content */
+        }
+        .container {
+            background-color: #1DB954;
+            padding: 1em; /* Reduced padding */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 50%; /* Adjusted width to make it smaller */
+            max-width: 600px; /* Adjusted to make it smaller */
+        }
+        h1 {
+            color: black;
+            font-size: 1.5em; /* Reduced font size */
+        }
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0.5em 1em; /* Reduced padding */
+            font-size: 1em; /* Reduced font size */
+            color: #fff;
+            background-color: #1DB954; /* Spotify green color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            background-color: #14833b;
+        }
+        .message {
+            color: #fff; /* White color */
+            margin-bottom: 0.5em; /* Reduced margin */
+            font-size: 1em; /* Reduced font size */
+        }
+        .subtext {
+            color: black;
+            font-size: 1em; /* Reduced font size */
+            margin-top: 0.5em;
+            margin-bottom: 1em; /* Reduced margin */
+        }
+        .recommendation {
+            background-color: black;
+            padding: 0.5em; /* Reduced padding */
+            margin: 0.5em 0; /* Reduced margin */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .recommendation img {
+            border-radius: 10px;
+            margin-right: 0.5em; /* Reduced margin */
+            width: 80px; /* Increased size */
+            height: 80px; /* Increased size */
+        }
+        .recommendation div {
+            text-align: left;
+        }
+        .recommendation a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em; /* Reduced font size */
+        }
+        .recommendation a:hover {
+            text-decoration: underline;
+        }
+        button {
+            padding: 0.5em 1em; /* Reduced padding */
+            font-size: 1em; /* Reduced font size */
+            color: #1db954;
+            background-color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1em; /* Reduced margin */
+        }
+        button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('choose_playlist') }}" class="back-btn">Back</a>
+        <h1>Top 10 Local Song Recommendations for {{ session['playlist_name'] }}</h1>
+        <p class="subtext">Click on the title of the song to listen to it!</p>
+        {% for rec in recommendations %}
+            <div class="recommendation">
+                <img src="{{ rec.url }}" alt="{{ rec['Track Name'] }}">
+                <div>
+                    <a href="{{ rec.spotify_url }}" target="_blank">
+                        <h2>{{ rec['Track Name'] }}</h2>
+                    </a>
+                    <p>{{ rec['Artist Name(s)'] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <form action="{{ url_for('create_top_40_playlist') }}" method="post">
+            <button type="submit">Create Local Music Mix for {{ session['playlist_name'] }}</button>
+        </form>
+    </div>
+</body>
+</html>

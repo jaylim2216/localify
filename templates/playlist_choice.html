@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select a Playlist</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Futura+PT:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Futura PT', Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff; /* White color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #1c1c1c;
+            padding: 2em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+        h1 {
+            color: #fff; /* White color */
+            font-size: 2em;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+        .playlist {
+            background-color: #000; /* Black background */
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+        }
+        .playlist img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .playlist input[type="radio"] {
+            display: none;
+        }
+        .playlist label {
+            display: block;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #fff; /* White color */
+            font-weight: bold
+        }
+        .playlist label:hover {
+            color: #1DB954; /* Spotify green color */
+        }
+        .playlist .custom-radio {
+            margin-top: 10px;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #1DB954; /* Spotify green color */
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        .playlist input[type="radio"]:checked + .custom-radio {
+            background-color: #1DB954; /* Spotify green color */
+        }
+        .playlist input[type="radio"]:checked + .custom-radio::after {
+            content: '';
+            display: block;
+            width: 14px;
+            height: 14px;
+            background-color: #000; /* Black color */
+            border-radius: 50%;
+            margin: 7px;
+        }
+        .submit-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        button.submit-btn {
+            padding: 1em 2em;
+            font-size: 1.2em;
+            color: white;
+            background-color: #1DB954; /* Spotify green color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button.submit-btn:hover {
+            background-color: #14833b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose a playlist that you would like to Localify!</h1>
+        <form action="{{ url_for('choose_playlist') }}" method="post">
+            <div class="playlist-grid">
+                {% for playlist in playlists %}
+                    <div class="playlist">
+                        <img src="{{ playlist.images[0].url if playlist.images else '' }}" alt="{{ playlist.name }}">
+                        <label for="{{ playlist.id }}">{{ playlist.name }}</label>
+                        <input type="radio" id="{{ playlist.id }}" name="playlist_name" value="{{ playlist.name }}" required>
+                        <label class="custom-radio" for="{{ playlist.id }}"></label>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Localify!</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

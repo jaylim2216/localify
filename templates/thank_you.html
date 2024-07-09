@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Futura+PT:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Futura PT', Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff; /* White color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #1c1c1c;
+            padding: 3em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #1DB954; /* Spotify green color */
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+        .message {
+            color: #fff; /* White color */
+            font-size: 1.5em;
+            margin-bottom: 2em;
+        }
+        .button-container {
+            margin-top: 2em;
+        }
+        a.button {
+            padding: 1em 2em;
+            font-size: 1.2em;
+            color: #1DB954; /* Spotify green color */
+            background-color: #000; /* Black background */
+            border: 2px solid #1DB954; /* Spotify green color */
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+        a.button:hover {
+            background-color: #1DB954; /* Spotify green color */
+            color: #000; /* Black color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You for Using Localify!</h1>
+        <div class="message">We have created a Local Music Mix for "{{ playlist_name }}" in your Spotify library.</div>
+        <div class="button-container">
+            <a href="https://open.spotify.com/playlist/{{ playlist_id }}" class="button">Check it out!</a>
+        </div>
+    </div>
+</body>
+</html>
