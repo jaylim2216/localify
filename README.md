@@ -34,7 +34,11 @@ Welcome to my Localify project! This repository contains a Python-based web appl
 - **app.py**: The main application file that sets up Flask routes and handles user interactions.
 - **templates**: Contains the HTML templates for rendering the web pages.
 - **static**: Holds static files like CSS for styling the web interface.
-- **spotify_functions.py**: Includes functions for interacting with the Spotify API and processing the playlist data.\
+- **spotify_functions.py**: Includes functions for interacting with the Spotify API and processing the playlist data.
+
+### Hosting and Status
+- The application is currently hosted on PythonAnywhere.
+- An extension request is pending approval by Spotify. The site is not live yet and will go live once Spotify approves the extension request.
 
 ### Screenshots of the App
 ![image](https://github.com/jaylim2216/localify-spotify/assets/98379009/d330d9bc-25ca-4fcc-808d-e49d385c78d7)
