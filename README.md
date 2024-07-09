@@ -1,6 +1,7 @@
 ## Localify: Singaporean Music Recommendation Algorithm with Spotify
 
 Welcome to Localify! This is a project I started from scratch in Summer 2024 because I always wanted an app that would recommend me local music based on my music taste! #SupportLocal
+
 This repository contains a Python-based web application that leverages the Spotify API to provide personalised local music recommendations. Users can input their Spotify playlists, and the application will suggest Singaporean music based on the characteristics of their chosen playlist. Additionally, users have the option to create a new playlist with these recommendations directly in their Spotify library.
 
 ### Features
